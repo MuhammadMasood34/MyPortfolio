@@ -6,7 +6,7 @@ import float from './global.css'
 function page() {
   return (
     <>
-      <div className="bg-[#04140D] text-white min-h-screen flex flex-col items-center justify-center p-6 md:flex-row md:p-10 gap-10">
+      <div className="bg-[#04140D] text-white min-h-screen flex flex-col items-center justify-center p-6 md:flex-row md:p-10 gap-10  bg-[image:linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:60px_60px]">
         <div className='flex flex-col gap-5 items-center text-center md:items-start md:text-left'>
           <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-green-00 font-extrabold'>Muhammad Masood Sheikh</h1>
           <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-4 md:mt-7 font-bold text-[#34D399]'>MERN Stack Developer</h2>
@@ -22,13 +22,18 @@ function page() {
             '>
               <ChatDots />
               Contact me</button>
-            <button className='border px-4 py-2 border-[#10B981] rounded-[10px] flex justify-around items-center text-[18px] hover:bg-[#188a61] hover:scale-105  transition-all duration-400 cursor-pointer'>
+            <a
+              href="/documents/Resume.pdf"
+              target="_blank"
+              className='border px-4 py-2 border-[#10B981] rounded-[10px] flex justify-around items-center text-[18px] hover:bg-[#188a61] hover:scale-105  transition-all duration-400 cursor-pointer'>
               <Download className="h-5" />
-              Download Resume</button>
+              Download Resume</a>
 
-            <button className='border h-10 px-4 py-2 border-[#10B981] rounded-[10px]  flex justify-evenly items-center text-[18px] hover:bg-[#25D366] hover:text-white hover:border-transparent hover:scale-105  transition-all duration-400 cursor-pointer '>
+            <a
+              href="https://wa.me/923323139837"
+              className='border h-10 px-4 py-2 border-[#10B981] rounded-[10px]  flex justify-evenly items-center text-[18px] hover:bg-[#25D366] hover:text-white hover:border-transparent hover:scale-105  transition-all duration-400 cursor-pointer '>
               <WhatsappFill className="h-5" />
-              Whatsapp</button>
+              Whatsapp</a>
           </div>
 
 
