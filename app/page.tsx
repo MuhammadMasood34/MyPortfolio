@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ProfileImg2 from "./assets/ProfileImg2.jpeg";
 import { ChatDots, Download, WhatsappFill, Plus } from "akar-icons";
+import SkillsSection from "@/components/SkillsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 
 export default function Page() {
@@ -92,6 +93,9 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      {/* Skills Section */}
+      <SkillsSection />
 
       {/* Experience Section */}
       <ExperienceSection />
