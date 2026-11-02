@@ -1,14 +1,20 @@
 import Image from "next/image";
 import ProfileImg2 from "./assets/ProfileImg2.jpeg";
 import { ChatDots, Download, WhatsappFill, Plus } from "akar-icons";
+import Navbar from "@/components/Navbar";
 import SkillsSection from "@/components/SkillsSection";
 import ExperienceSection from "@/components/ExperienceSection";
+import ContactSection from "@/components/ContactSection";
 
 export default function Page() {
   return (
     <main className="min-h-screen bg-[#04140D] text-white overflow-x-hidden selection:bg-[#10B981] selection:text-black">
+      {/* Top Navbar */}
+      <Navbar />
+
       {/* Hero Section */}
       <section
+        id="about"
         aria-label="Hero Section"
         className="min-h-screen w-full flex items-center justify-center p-6 sm:p-8 md:p-12 lg:p-16 xl:p-20 2xl:p-24 bg-[image:linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:60px_60px]"
       >
@@ -73,22 +79,22 @@ export default function Page() {
           {/* Right Image Column with Floating Badges */}
           <div className="relative shrink-0 flex items-center justify-center mt-6 md:mt-0">
             {/* Top-right badge */}
-            <div className="absolute -top-2 -right-2 sm:top-2 sm:right-2 lg:top-4 lg:right-4 xl:top-6 xl:right-6 bg-gray-900/85 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 lg:px-5 lg:py-2.5 xl:px-6 xl:py-3 rounded-xl animate-[float_3s_ease-in-out_infinite] border border-emerald-950/40 shadow-lg shadow-black/40 z-10">
-              <p className="text-[11px] sm:text-xs lg:text-sm xl:text-base text-gray-300 font-medium">Specialized in</p>
-              <p className="text-xs sm:text-sm lg:text-base xl:text-lg text-[#34D399] font-bold">React &amp; Node.js</p>
+            <div className="absolute -top-1 -right-1 sm:top-1 sm:right-1 lg:top-2 lg:right-2 xl:top-3 xl:right-3 bg-gray-900/85 backdrop-blur-md px-2.5 py-1 sm:px-3 sm:py-1.5 lg:px-4 lg:py-2 rounded-lg sm:rounded-xl animate-[float_3s_ease-in-out_infinite] border border-emerald-950/40 shadow-lg shadow-black/40 z-10">
+              <p className="text-[10px] sm:text-[11px] lg:text-xs text-gray-300 font-medium">Specialized in</p>
+              <p className="text-[11px] sm:text-xs lg:text-sm text-[#34D399] font-bold">React &amp; Node.js</p>
             </div>
 
             {/* Bottom-left badge */}
-            <div className="absolute -bottom-2 -left-2 sm:bottom-2 sm:left-2 lg:bottom-4 lg:left-4 xl:bottom-6 xl:left-6 bg-gray-900/85 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 lg:px-5 lg:py-2.5 xl:px-6 xl:py-3 rounded-xl animate-[float_3s_ease-in-out_infinite] [animation-delay:1.5s] border border-emerald-950/40 shadow-lg shadow-black/40 z-10">
-              <p className="text-[11px] sm:text-xs lg:text-sm xl:text-base text-gray-300 font-medium">Based in</p>
-              <p className="text-xs sm:text-sm lg:text-base xl:text-lg text-[#34D399] font-bold">Karachi, Pakistan</p>
+            <div className="absolute -bottom-1 -left-1 sm:bottom-1 sm:left-1 lg:bottom-2 lg:left-2 xl:bottom-3 xl:left-3 bg-gray-900/85 backdrop-blur-md px-2.5 py-1 sm:px-3 sm:py-1.5 lg:px-4 lg:py-2 rounded-lg sm:rounded-xl animate-[float_3s_ease-in-out_infinite] [animation-delay:1.5s] border border-emerald-950/40 shadow-lg shadow-black/40 z-10">
+              <p className="text-[10px] sm:text-[11px] lg:text-xs text-gray-300 font-medium">Based in</p>
+              <p className="text-[11px] sm:text-xs lg:text-sm text-[#34D399] font-bold">Karachi, Pakistan</p>
             </div>
 
             <Image
               src={ProfileImg2}
               alt="Muhammad Masood Sheikh"
               priority
-              className="w-56 h-56 sm:w-68 sm:h-68 md:w-80 md:h-80 lg:w-[420px] lg:h-[420px] xl:w-[500px] xl:h-[500px] 2xl:w-[580px] 2xl:h-[580px] object-cover rounded-full shadow-2xl shadow-[#18805d]/40 ring-4 ring-emerald-500/20"
+              className="w-44 h-44 sm:w-52 sm:h-52 md:w-60 md:h-60 lg:w-[320px] lg:h-[320px] xl:w-[380px] xl:h-[380px] 2xl:w-[440px] 2xl:h-[440px] object-cover rounded-full shadow-2xl shadow-[#18805d]/40 ring-4 ring-emerald-500/20"
             />
           </div>
         </div>
@@ -99,6 +105,9 @@ export default function Page() {
 
       {/* Experience Section */}
       <ExperienceSection />
+
+      {/* Contact Section */}
+      <ContactSection />
 
       {/* Footer */}
       <footer className="py-8 sm:py-10 md:py-12 xl:py-14 text-center text-xs sm:text-sm xl:text-base text-zinc-500 border-t border-emerald-950/40 bg-[#04140D]">

@@ -134,6 +134,7 @@ export default function ExperienceSection({
 
   return (
     <section
+      id="experience"
       aria-label="Experience section"
       className="relative w-full py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32 2xl:py-36 px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20 bg-[#04140D] bg-[image:linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:60px_60px] text-white selection:bg-[#10B981] selection:text-black overflow-hidden"
     >
