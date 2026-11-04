@@ -19,7 +19,7 @@ export function createStationScene() {
   try {
     const room = createRoom(scene, kit);
     const desk = createWorkstation(scene, kit);
-    const avatar = createAvatar(scene, kit, desk.keyboard);
+    const avatar = createAvatar(scene, kit);
     scene.add(new THREE.HemisphereLight("#fff8e9", "#647c6a", 2.3));
     const key = new THREE.DirectionalLight("#fff1df", 3.1);
     key.position.set(-2.5, 5.2, 4);
