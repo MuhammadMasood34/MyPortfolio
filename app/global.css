@@ -1,1 +1,67 @@
-@import "tailwindcss" ;
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #04140d;
+  --color-brand-card: #081a14;
+  --color-brand-card-hover: #0c241c;
+  --color-brand-border: #113327;
+  --color-brand-border-active: #10b981;
+  --color-brand-emerald: #10b981;
+  --color-brand-mint: #34d399;
+  --color-brand-muted: #6ee7b7;
+}
+
+:root {
+  --bg-primary: #04140d;
+  --bg-card: #081a14;
+  --bg-card-hover: #0c241c;
+  --accent-emerald: #10b981;
+  --accent-mint: #34d399;
+  --border-subtle: #113327;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.7), 0 0 24px rgba(52, 211, 153, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.9), 0 0 35px rgba(52, 211, 153, 0.6);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in {
+    animation: none !important;
+  }
+}
+
+.bg-portfolio-grid {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
