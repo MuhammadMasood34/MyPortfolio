@@ -2,20 +2,14 @@
 
 import { useState, useRef, useEffect, type FormEvent } from "react";
 import dynamic from "next/dynamic";
+import DevStationPlaceholder from "./DevStationPlaceholder";
 
-// Dynamic import for the 3D scene (ssr: false, zero impact on initial load)
+// Keep Three.js in a separate client chunk and request it near the viewport.
 const DeveloperDesk3D = dynamic(
   () => import("@/components/DeveloperDesk3D"),
   {
     ssr: false,
-    loading: () => (
-      <div className="w-full h-full min-h-[520px] rounded-[24px] border border-emerald-500/20 bg-[#04140f] flex items-center justify-center">
-        <div className="flex flex-col items-center gap-3">
-          <div className="size-8 rounded-full border-2 border-emerald-500/30 border-t-[#10B981] animate-spin" />
-          <span className="text-xs text-emerald-200/60 font-mono">Loading 3D workspace...</span>
-        </div>
-      </div>
-    ),
+    loading: () => <DevStationPlaceholder />,
   }
 );
 
@@ -30,20 +24,6 @@ export default function ContactSection() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
 
-  // WebGL support detection
-  const [webGLSupported] = useState<boolean>(() => {
-    if (typeof window === "undefined") return true;
-    try {
-      const canvas = document.createElement("canvas");
-      return Boolean(
-        window.WebGLRenderingContext &&
-          (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
-      );
-    } catch {
-      return false;
-    }
-  });
-
   // IntersectionObserver to only mount 3D scene when scrolled near viewport
   const [isNearViewport, setIsNearViewport] = useState(false);
   const panelRef = useRef<HTMLDivElement | null>(null);
@@ -57,7 +37,7 @@ export default function ContactSection() {
           observer.disconnect();
         }
       },
-      { rootMargin: "250px" }
+      { rootMargin: "200px" }
     );
     observer.observe(panelRef.current);
     return () => observer.disconnect();
@@ -111,9 +91,9 @@ export default function ContactSection() {
         </div>
 
         {/* Two-Column Grid: Form (Left) & 3D Desk (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 xl:gap-12 items-stretch">
+        <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] gap-6 sm:gap-8 xl:gap-10 2xl:gap-12 items-center">
           {/* Left Column: Contact Form */}
-          <div className="rounded-2xl 2xl:rounded-3xl border border-emerald-950/60 bg-[#061711]/75 backdrop-blur-md p-6 sm:p-8 lg:p-10 flex flex-col justify-between shadow-2xl">
+          <div className="min-w-0 rounded-2xl 2xl:rounded-3xl border border-emerald-950/60 bg-[#061711]/75 backdrop-blur-md p-5 sm:p-8 2xl:p-10 flex flex-col justify-between shadow-2xl">
             <form onSubmit={handleSubmit} className="flex flex-col gap-5 sm:gap-6 flex-1 justify-between">
               {/* Bot Honeypot (visually hidden, tabIndex -1) */}
               <div className="hidden" aria-hidden="true">
@@ -214,26 +194,12 @@ export default function ContactSection() {
           {/* Right Column: 3D Developer Desk Scene */}
           <div
             ref={panelRef}
-            className="w-full h-full min-h-[520px] relative flex flex-col"
+            className="w-full min-w-0 relative"
           >
-            {isNearViewport && webGLSupported ? (
+            {isNearViewport ? (
               <DeveloperDesk3D />
-            ) : !webGLSupported ? (
-              /* WebGL unavailable fallback */
-              <div className="w-full h-full min-h-[520px] rounded-[24px] border border-emerald-500/20 bg-[#04140f] flex flex-col items-center justify-center p-8 text-center gap-3">
-                <div className="size-12 rounded-xl bg-[#081a14] border border-emerald-950/80 flex items-center justify-center text-2xl">
-                  💻
-                </div>
-                <h3 className="font-bold text-lg text-white">Developer Workspace</h3>
-                <p className="text-xs sm:text-sm text-emerald-100/60 max-w-xs leading-relaxed">
-                  Interactive 3D preview requires WebGL support. Feel free to leave a message using the form!
-                </p>
-              </div>
             ) : (
-              /* Lightweight placeholder before scrolling into view */
-              <div className="w-full h-full min-h-[520px] rounded-[24px] border border-emerald-500/20 bg-[#04140f] flex items-center justify-center">
-                <div className="size-6 rounded-full border-2 border-emerald-500/20 border-t-[#10B981] animate-spin" />
-              </div>
+              <DevStationPlaceholder />
             )}
           </div>
         </div>
